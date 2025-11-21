@@ -39,14 +39,11 @@ def get_parser() -> ArgumentParser:
     parser.add_argument('--P_num', default=10, type=int)
     parser.add_argument('--prompts_num', default=256, type=int)
     parser.add_argument('--weight_fea', default=0.000001, type=float)
-
     parser.add_argument('--loss_fea', action='store_true')
     parser.add_argument('--loss_diff', action='store_true')
     parser.add_argument('--loss_t', action='store_true')
-
-
-
     return parser
+    
 def get_args(parser: ArgumentParser) -> Namespace:
     args = parser.parse_args()
     args.fps = -1
@@ -227,6 +224,7 @@ if __name__ == '__main__':
     uap_save_path = f"uap_file/{args.train_dataset}.pth"
     torch.save(perturbation.cpu(), uap_save_path)
     print(f"\n Global UAP saved to {uap_save_path}")
+
 
 
 
