@@ -42,8 +42,8 @@ def run(args, custom_dataset):
 
         video_subset = Subset(custom_dataset, indices)
         video_loader = DataLoader(video_subset, batch_size=1, collate_fn=collate_fn)
-        video_result_path = f"./adv/{args.train_dataset}"
-        video_result_clean = f"./clean/{args.train_dataset}"
+        video_result_path = f"./adv/{args.train_dataset}/{video_name}"
+        video_result_clean = f"./clean/{args.train_dataset}/{video_name}"
 
 
         mask_gt_dict = {}
@@ -178,3 +178,4 @@ if __name__ == '__main__':
     custom_dataset = choose_dataset(args)
     video_test, miouimg, miouadv,frames_clean_test,frames_adv_test,frames_train= run(args, custom_dataset)
     print(f":: miouimg: {miouimg * 100:.2f} %, miouadv: {miouadv * 100:.2f} %, video_test: {video_test} , frame_clean_test:{frames_clean_test} , frames_adv_test:{frames_adv_test},frame_train:{frames_train}")
+
